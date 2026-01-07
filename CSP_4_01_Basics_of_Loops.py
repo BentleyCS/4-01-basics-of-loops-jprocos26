@@ -7,6 +7,17 @@ def oddNumbers(n:int) ->str:
     example oddNumbers(8) -> "1 3 5 7"
     example oddNumbers(-8) -> ""
     """
+    if n < 1:
+        return ""
+    
+    result = ""
+    
+    for i in range(1, n + 1):
+        if i % 2 == 1:
+            result = result + str(i) + " "
+    
+    result = result.strip()
+    return result
 
 
 def backwards(n)-> int:
@@ -17,6 +28,16 @@ def backwards(n)-> int:
     example backwards(8) -> "8 7 6 5 4 3 2 1"
     example backwards(-2) -> ""
     """
+    if n < 1:
+        return ""
+    
+    result = ""
+    
+    for i in range(n, 0, -1):
+        result = result + str(i) + " "
+    
+    result = result.strip()
+    return result
 
 
 
@@ -27,8 +48,18 @@ def randomRepeating():
     NOTE: Given randomness no test for this question
     :return:
     """
+    import random
+    
     tries = 0
+    num = 0
+    
+    while num != 10:
+        num = random.randint(1, 10)
+        print(num)
+        tries = tries + 1
+    
     print(f"it took {tries} tries to get a 10")
+
 def randomRange(n):
     """
     Generate a random number from 1 to 100 n number of times. Then after that is
@@ -37,12 +68,37 @@ def randomRange(n):
     :param n:
     :return:
     """
+    import random
+    
+    highest = 0
+    lowest = 101
+    
+    for i in range(n):
+        num = random.randint(1, 100)
+        print(num)
+        
+        if num > highest:
+            highest = num
+        
+        if num < lowest:
+            lowest = num
+    
+    print(f"Highest: {highest}")
+    print(f"Lowest: {lowest}")
+
 def reverse(word:str)->str:
     """
     Takes in a string as an argument and return the given string in reverse.
     example reverse("cat") -> "tac"
     example reverse("Hello") -> "olleH"
     """
+    result = ""
+    
+    for letter in word:
+        result = letter + result
+    
+    return result
+
 
 def fizzBuzzContinuous(n):
     """
@@ -58,6 +114,20 @@ def fizzBuzzContinuous(n):
     :param n:
     :return:
     """
+    result = ""
+    
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result = result + "fizzbuzz "
+        elif i % 3 == 0:
+            result = result + "fizz "
+        elif i % 5 == 0:
+            result = result + "buzz "
+        else:
+            result = result + str(i) + " "
+    
+    result = result.strip()
+    return result
 
 def collatz(n):
     """
@@ -69,6 +139,15 @@ def collatz(n):
     :param n:
     :return:
     """
+    while n != 1:
+        print(n)
+        
+        if n % 2 == 0:
+            n = n / 2
+        else:
+            n = n * 3 + 1
+    
+    print(1)
 
 
 def fibonacci(n):
@@ -83,6 +162,21 @@ def fibonacci(n):
     :param n:
     :return:
     """
-
-
-print(fibonacci(300))
+    if n == 0:
+        return ""
+    
+    if n == 1:
+        return "0"
+    
+    result = "0 1 "
+    a = 0
+    b = 1
+    
+    for i in range(n - 2):
+        next_num = a + b
+        result = result + str(next_num) + " "
+        a = b
+        b = next_num
+    
+    result = result.strip()
+    return result
